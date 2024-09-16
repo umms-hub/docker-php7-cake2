@@ -6,7 +6,6 @@ RUN dnf -y upgrade
 RUN dnf -y install vim unzip
 #RUN dnf -y module install nginx:1.24/common
 RUN dnf module reset php 
-#RUN dnf module enable php:remi-7.4
 RUN dnf -y module install php:remi-7.4
 #CakePHP実行に最低限必要なパッケージをインストール
 RUN dnf -y install php php-fpm php-imagick php-cli php-json php-devel php-gd php-pdo php-mysqlnd php-intl php-mbstring php-xml
