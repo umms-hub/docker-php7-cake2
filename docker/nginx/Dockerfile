@@ -5,10 +5,10 @@ RUN dnf -y upgrade \
 && dnf -y install procps \
 && dnf clean all
 
+# use volume
 #COPY nginx.conf /etc/nginx/
 #COPY default.conf /etc/nginx/default.d/
 
-#WORKDIR /home/${USER_NAME}
 WORKDIR /var/www/html
 
-CMD ["systemctl enable --now nginx"]
+CMD ["/usr/sbin/init"]

@@ -15,11 +15,10 @@ WORKDIR /tmp
 RUN dnf -y install unzip wget \
 && wget https://getcomposer.org/installer -O composer-installer.php \
 && php composer-installer.php --filename=composer --install-dir=/usr/local/bin \
-&& composer self-update
+&& composer self-update \
+&& dnf clean all
 
 # unix socket
-#RUN mkdir /var/run/php-fpm
-#VOLUME ["/var/run/php-fpm"]
 RUN mkdir -p /run/php-fpm
 
 # setting files
@@ -31,4 +30,4 @@ RUN chown nginx:nginx -R /var/www/html
 
 WORKDIR /var/www/html
 
-CMD ["systemctl enable --now php-fpm"]
+CMD ["/usr/sbin/init"]
