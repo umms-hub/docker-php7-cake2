@@ -10,3 +10,5 @@ RUN dnf -y upgrade \
 
 #WORKDIR /home/${USER_NAME}
 WORKDIR /var/www/html
+
+CMD ["systemctl enable --now nginx"]

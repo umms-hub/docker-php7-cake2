@@ -20,9 +20,15 @@ RUN dnf -y install unzip wget \
 # unix socket
 #RUN mkdir /var/run/php-fpm
 #VOLUME ["/var/run/php-fpm"]
+RUN mkdir -p /run/php-fpm
 
 # setting files
 COPY php.ini /etc/
-COPY zz-www.conf /etc/php-fpm.d/
+COPY www.conf /etc/php-fpm.d/
+
+RUN chown nginx:nginx /var/lib/php/session
+RUN chown nginx:nginx -R /var/www/html
 
 WORKDIR /var/www/html
+
+CMD ["systemctl enable --now php-fpm"]
