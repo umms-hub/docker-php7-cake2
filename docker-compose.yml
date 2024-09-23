@@ -43,9 +43,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DB}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PW}
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    #command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - mysqldata:/var/lib/mysql
+      - ./docker/mysql:/docker-entrypoint-initdb.d
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     tty: true
     restart: always
