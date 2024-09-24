@@ -7,8 +7,8 @@ RUN dnf -y install epel-release \
 #RUN dnf -y module install nginx:1.24/common
 && dnf module reset php \
 && dnf -y module install php:remi-7.4 \
-&& dnf -y install php php-fpm php-imagick php-cli php-json php-devel php-gd php-pdo php-mysqlnd php-intl php-mbstring php-xml \
-&& dnf -y install phpMyAdmin
+&& dnf -y install php php-fpm php-imagick php-cli php-json php-devel php-gd php-pdo php-mysqlnd php-intl php-mbstring php-xml
+#&& dnf -y install phpMyAdmin
 
 # install composer
 WORKDIR /tmp
@@ -29,5 +29,3 @@ RUN chown nginx:nginx /var/lib/php/session
 RUN chown nginx:nginx -R /var/www/html
 
 WORKDIR /var/www/html
-
-CMD ["/usr/sbin/init"]

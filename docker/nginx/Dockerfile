@@ -11,4 +11,4 @@ RUN dnf -y upgrade \
 
 WORKDIR /var/www/html
 
-CMD ["/usr/sbin/init"]
+CMD ["nginx", "-g", "daemon off;"]
